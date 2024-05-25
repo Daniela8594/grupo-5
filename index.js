@@ -31,8 +31,24 @@ app.get ('/catalogo', (req, res) => {
 
 // RUTA /TITULO/:TITLE
 app.get ('/titulo/:title', (req, res) => {
-    res.send('titulo');
-});
+        let param = req.params.title.trim().toLowerCase();
+        console.log(param)
+        res.send(param)
+        //if (param !== '') {
+         //   let result = [];
+            
+         //   titulo.forEach(p => {
+           //   if(p.titulo.toLowerCase().includes(param)){
+            //    result.push(p);
+           //   }  
+            });
+      
+         //   result.length > 0 ? 
+           // res.json(result) :
+           // res.status(404).json({ id: 'Error', descripcion: 'No se encontraron coincidencias.' })
+      //  }
+//});
+
 
 // RUTA /CATEGORIA/:CAT
 app.get ('/categoria/:cat', (req, res) => {
@@ -51,12 +67,12 @@ app.get ('/trailer/:id', (req, res) => {
 
 // RUTA PREDETERMINADA PARA MANEJAR RUTAS INEXISTENTES
 app.get ('*', (req, res) => {
-    res.status(404).send('lo siento la pagina que buscas no existe');
+    res.status(404).send('Lo siento la pagina que buscas no existe');
 });
 
 // INICIA EL SERVIDOR
 app. listen(PORT, () =>{
-    console.log(`servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 
 
