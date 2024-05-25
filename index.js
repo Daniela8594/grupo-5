@@ -21,12 +21,12 @@ app.use ((req,res,next) => {
 
 // RUTA RAIZ
 app.get ('/', (req, res) => {
-    res.send(DB);
+    res.send('Bienvenidas a TRAILERFLIX - Grupo 5');
 });
 
 // RUTA /CATALOGO
 app.get ('/catalogo', (req, res) => {
-    res.send('catalogo');
+    res.send(DB);
 });
 
 // RUTA /TITULO/:TITLE
