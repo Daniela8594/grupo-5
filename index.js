@@ -49,6 +49,7 @@ app.get ('/trailer/:id', (req, res) => {
     res.send('trailer');
 });
 
+
 // RUTA PREDETERMINADA PARA MANEJAR RUTAS INEXISTENTES
 app.get ('*', (req, res) => {
     res.status(404).send('lo siento la pagina que buscas no existe');
