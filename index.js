@@ -52,10 +52,42 @@ app.get ('/reparto/:act', (req, res) => {
 });
 
 // RUTA /TRAILER/:ID
-app.get ('/trailer/:id', (req, res) => {
-    res.send('trailer');
-});
+//app.get ('/trailer/:id', (req, res) => {
+//    res.send('trailer');
+//});
 
+
+app.get("/trailer/:id", (req, res) => {
+    let codigo = parseInt(req.params.id);
+  
+    if (typeof codigo === "number") {
+      const found = DB.find((element) => element.id == codigo);
+  
+      found?.trailer
+        ? res.send(
+            "ID:" +
+              found.id +
+              " Titulo: " +
+              found.titulo +
+              " Link al trailer:" +
+              found.trailer
+          )
+        : res.status(404).json({
+            id: "Error",
+            descripcion:
+              "El trailer de la pelicula con id = " +
+              codigo +
+              " no se encuentra disponible",
+          });
+    }
+  });
+  
+  app.get("*", (req, res) => {
+    res.json({
+      error: "404",
+      message: "No se encuentra la ruta o recurso solicitado",
+    });
+  });
 
 // RUTA PREDETERMINADA PARA MANEJAR RUTAS INEXISTENTES
 app.get ('*', (req, res) => {
