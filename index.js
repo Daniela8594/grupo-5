@@ -4,7 +4,7 @@ const express = require ('express');
 const app = express();
 
 
-const { leerPeliculas } = require('./src/trailerflix.controller');
+const { leerPeliculas, encontrarPeliculas } = require('./src/trailerflix.controller');
 
 const PORT = process.env.PORT || 3008;
 
@@ -33,21 +33,10 @@ app.get ('/catalogo', (req, res) => {
 app.get ('/titulo/:title', (req, res) => {
         let param = req.params.title.trim().toLowerCase();
         console.log(param)
-        res.send(param)
-        //if (param !== '') {
-         //   let result = [];
-            
-         //   titulo.forEach(p => {
-           //   if(p.titulo.toLowerCase().includes(param)){
-            //    result.push(p);
-           //   }  
-            });
-
-         //   result.length > 0 ? 
-           // res.json(result) :
-           // res.status(404).json({ id: 'Error', descripcion: 'No se encontraron coincidencias.' })
-      //  }
-//});
+        const pelis = encontrarPeliculas(param);
+        res.send(pelis)
+     
+    });        
 
 
 // RUTA /CATEGORIA/:CAT

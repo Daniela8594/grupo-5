@@ -6,4 +6,12 @@ function leerPeliculas() {
     return PELICULAS
 }
 
-module.exports = {leerPeliculas}
+function encontrarPeliculas(title) {
+    DB = leerPeliculas(); 
+    console.log(DB)
+    const result = DB.filter(DB => DB.titulo.trim().toLowerCase().includes(title)) 
+    return result
+  
+   
+}
+module.exports = {leerPeliculas, encontrarPeliculas}
