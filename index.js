@@ -42,7 +42,7 @@ app.get ('/titulo/:title', (req, res) => {
             //    result.push(p);
            //   }  
             });
-      
+
          //   result.length > 0 ? 
            // res.json(result) :
            // res.status(404).json({ id: 'Error', descripcion: 'No se encontraron coincidencias.' })
