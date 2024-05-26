@@ -8,8 +8,11 @@ function leerPeliculas() {
 
 function encontrarPeliculas(title) {
     DB = leerPeliculas(); 
-    console.log(DB)
+    
     const result = DB.filter(DB => DB.titulo.trim().toLowerCase().includes(title)) 
+   // || [{error: `Error en el titulo`,
+    //descripcion: `No se pudo encontrar la pelicula`}]
+
     return result
   
    

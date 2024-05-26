@@ -32,7 +32,7 @@ app.get ('/catalogo', (req, res) => {
 // RUTA /TITULO/:TITLE
 app.get ('/titulo/:title', (req, res) => {
         let param = req.params.title.trim().toLowerCase();
-        console.log(param)
+        //console.log(param)
         const pelis = encontrarPeliculas(param);
         res.send(pelis)
      
