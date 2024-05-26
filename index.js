@@ -4,7 +4,7 @@ const express = require ('express');
 const app = express();
 
 
-const { leerPeliculas } = require('./src/trailerflix.controller');
+const { leerPeliculas, encontrarPeliculas } = require('./src/trailerflix.controller');
 
 const PORT = process.env.PORT || 3008;
 
@@ -31,8 +31,13 @@ app.get ('/catalogo', (req, res) => {
 
 // RUTA /TITULO/:TITLE
 app.get ('/titulo/:title', (req, res) => {
-    res.send('titulo');
-});
+        let param = req.params.title.trim().toLowerCase();
+        console.log(param)
+        const pelis = encontrarPeliculas(param);
+        res.send(pelis)
+     
+    });        
+
 
 // RUTA /CATEGORIA/:CAT
 app.get ('/categoria/:cat', (req, res) => {
@@ -52,12 +57,12 @@ app.get ('/trailer/:id', (req, res) => {
 
 // RUTA PREDETERMINADA PARA MANEJAR RUTAS INEXISTENTES
 app.get ('*', (req, res) => {
-    res.status(404).send('lo siento la pagina que buscas no existe');
+    res.status(404).send('Lo siento la pagina que buscas no existe');
 });
 
 // INICIA EL SERVIDOR
 app. listen(PORT, () =>{
-    console.log(`servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 
 
