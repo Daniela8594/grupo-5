@@ -26,14 +26,14 @@ Con la estructura base del proyecto ya desarrollada, deberás crear los endpoint
 
 * Creamos un endpoint llamado /catalogo que lista todo el contenido de trailerflix JSON. Se retorna todo el contenido del archivo.
 
-* Creamos un endpoint llamado /titulo/:title que lista el catálogo de películas y/o series que se aproxima al título enviado, es decir, una busqueda parcial del nombre de la pelicula. Para este endopint se utilizaron rutas dinámicas, recibiendo como parámetro el título o parte de este. Para ello se aplica la función .filter(), el método includes() y toLowerCase() para normalizar la búsqueda.
+* Creamos un endpoint llamado /titulo/:title que lista el catálogo de películas y/o series que se aproxima al título enviado, es decir, una busqueda parcial del nombre de la pelicula. Para este endopint se utilizaron rutas dinámicas, recibiendo como parámetro el título o parte de este. Para ello se aplica la función .filter(), el método includes() y toLowerCase() para normalizar la búsqueda. En caso de no encontrar ninguna coincidencia total o parcial se devuleve un json con el error y su descripcion
 
 * Creamos un endpoint llamado /categoria/:cat que lista todo el contenido del archivo JSON de acuerdo a la categoría enviada como parámetro (serie o película).Para este endpoint utilizamos .filter() y retorna todos los resultados encontrados. (Aquí son dos posibles valores solamente)
 
 * Crea un endpoint llamado /reparto/:act que liste el catálogo que incluya a la actriz o actor indicado por el nombre. (la búsqueda del nombre debe ser parcial)
 
 * Crea un endpoint llamado /trailer/:id que retorne la URL del trailer de la película o serie. Si ésta no posee video asociado, que retorne un mensaje en formato JSON notificando la no disponibilidad del mismo.
-⚙️ Recomendaciones:
+
 
 
 

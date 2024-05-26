@@ -10,11 +10,15 @@ function encontrarPeliculas(title) {
     DB = leerPeliculas(); 
     
     const result = DB.filter(DB => DB.titulo.trim().toLowerCase().includes(title))
+    return result
     
-
-    //return result
-    
-  
+};
+function encontrarPorCategoria(cat) {
+        DB = leerPeliculas(); 
+        
+        const result = DB.filter(DB => DB.categoria.trim().toLowerCase().includes(cat))
+         
+  return result
    
 }
 module.exports = {leerPeliculas, encontrarPeliculas}

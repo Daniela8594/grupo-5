@@ -32,19 +32,27 @@ app.get ('/catalogo', (req, res) => {
 // RUTA /TITULO/:TITLE
 app.get ('/titulo/:title', (req, res) => {
         let param = req.params.title.trim().toLowerCase();
-        //console.log(param)
+       
         const pelis = encontrarPeliculas(param);
         pelis!=undefined ?
-        res.json(pelis) :
+        res.send(pelis) :
         res.status(404).json({ id: 'Error', descripcion: 'No se encontraron peliculas con ese nombre.' });
      
     });        
 
 
 // RUTA /CATEGORIA/:CAT
-app.get ('/categoria/:cat', (req, res) => {
-    res.send('categoria');
-});
+//app.get ('/categoria/:cat', (req, res) => {
+
+   // let param = req.params.cat.trim().toLowerCase();
+        //console.log(param)
+      //  const catego = encontrarPorCategoria(param);
+       // pelis!=undefined ?
+        //res.json(pelis) :
+        //res.status(404).json({ id: 'Error', descripcion: 'No se encontraron peliculas con ese nombre.' });
+     
+    //res.send('categoria');
+//});
 
 // RUTA /REPARTO/:ACT
 app.get ('/reparto/:act', (req, res) => {
