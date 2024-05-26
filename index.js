@@ -64,7 +64,6 @@ app.get ('/reparto/:act', (req, res) => {
 //    res.send('trailer');
 //});
 
-
 app.get("/trailer/:id", (req, res) => {
     let codigo = parseInt(req.params.id);
   
