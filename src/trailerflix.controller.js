@@ -9,11 +9,11 @@ function leerPeliculas() {
 function encontrarPeliculas(title) {
     DB = leerPeliculas(); 
     
-    const result = DB.filter(DB => DB.titulo.trim().toLowerCase().includes(title)) 
-   // || [{error: `Error en el titulo`,
-    //descripcion: `No se pudo encontrar la pelicula`}]
+    const result = DB.filter(DB => DB.titulo.trim().toLowerCase().includes(title))
+    
 
-    return result
+    //return result
+    
   
    
 }
