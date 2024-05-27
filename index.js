@@ -31,10 +31,11 @@ app.get ('/catalogo', (req, res) => {
 
 // RUTA /TITULO/:TITLE
 app.get ('/titulo/:title', (req, res) => {
-        let param = req.params.title.trim().toLowerCase();
+        const param = req.params.title.trim().toLowerCase();
        
         const pelis = encontrarPeliculas(param);
-        pelis!=undefined ?
+        //console.log(pelis)
+        pelis!=''?
         res.send(pelis) :
         res.status(404).json({ id: 'Error', descripcion: 'No se encontraron peliculas con ese nombre.' });
      
@@ -59,10 +60,7 @@ app.get ('/reparto/:act', (req, res) => {
     res.send('reparto');
 });
 
-// RUTA /TRAILER/:ID
-//app.get ('/trailer/:id', (req, res) => {
-//    res.send('trailer');
-//});
+
 
 app.get("/trailer/:id", (req, res) => {
     let codigo = parseInt(req.params.id);
