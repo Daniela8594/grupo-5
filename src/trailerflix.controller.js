@@ -14,12 +14,5 @@ function encontrarPeliculas(title) {
     return result
     
 };
-//function encontrarPorCategoria(cat) {
-     //   DB = leerPeliculas(); 
-        
-       // const resulta = DB.filter(DB => DB.categoria.trim().toLowerCase().includes(cat))
-         
-  //return result
-   
-//}
+
 module.exports = {leerPeliculas, encontrarPeliculas}
