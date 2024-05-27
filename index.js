@@ -2,7 +2,7 @@ const dotenv = require ('dotenv');
 const bodyParser = require ('body-parser');
 const express = require ('express');
 const app = express();
-
+dotenv.config();
 
 const { leerPeliculas, encontrarPeliculas } = require('./src/trailerflix.controller');
 
@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3008;
 let DB = [];
 
 //MIDDLEWARE
-dotenv.config();
+
 app.use (bodyParser.json());
 
 app.use ((req,res,next) => {
