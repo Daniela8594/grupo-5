@@ -48,7 +48,7 @@ app.get ('/titulo/:title', (req, res) => {
    // let param = req.params.cat.trim().toLowerCase();
         //console.log(param)
       //  const catego = encontrarPorCategoria(param);
-       // pelis!=undefined ?
+       // catego!=undefined ?
         //res.json(pelis) :
         //res.status(404).json({ id: 'Error', descripcion: 'No se encontraron peliculas con ese nombre.' });
      
