@@ -56,19 +56,21 @@ app.get ('/titulo/:title', (req, res) => {
 //});
 
 // RUTA /REPARTO/:ACT
-app.get ('/reparto/:act', (req, res) => {
+app.get('/reparto/:act', (req, res) => {
   let parametro = req.params.act.trim().toLowerCase();
-        if (parametro !== ''){
-            let resultado = []
-            for (let reparto of trailerflix) {
-                if ( reparto.act.toLowerCase() === parametro) { 
-                    resultado.push(reparto)
-                }
-              
-            }
-        resultado.length > 0 ? 
-        res.json(resultado) : 
-        res.json([{id: 'Error', descripcion: 'No se encontro coincidencias'}]);
+  if (parametro !== '') {
+      let resultado = [];
+      for (let pelicula of DB) {
+          if (pelicula.reparto && pelicula.reparto.toLowerCase().includes(parametro)) {
+              resultado.push(pelicula);
+          }
+      }
+      resultado.length > 0 ?
+          res.json(resultado) :
+          res.status(404).json({ id: 'Error', descripcion: 'No se encontraron películas con ese actor.' });
+  } else {
+      res.status(400).json({ id: 'Error', descripcion: 'El parámetro no puede estar vacío.' });
+  }
 });
 
 
