@@ -43,17 +43,28 @@ app.get ('/titulo/:title', (req, res) => {
 
 
 // RUTA /CATEGORIA/:CAT
-//app.get ('/categoria/:cat', (req, res) => {
 
-   // let param = req.params.cat.trim().toLowerCase();
-        //console.log(param)
-      //  const catego = encontrarPorCategoria(param);
-       // catego!=undefined ?
-        //res.json(pelis) :
-        //res.status(404).json({ id: 'Error', descripcion: 'No se encontraron peliculas con ese nombre.' });
-     
-    //res.send('categoria');
-//});
+// Removedor de acentos y tildes
+const removeAccents = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+};
+
+app.get("/categoria/:cat", (req, res) => {
+  const categ = req.params.cat.trim().toLowerCase();
+  const categoriaLimpia = removeAccents(categ);
+
+  let filtrarCateg = DB.filter(
+    (cate) => removeAccents(cate.categoria.toLowerCase()) === categoriaLimpia
+  );
+
+  if (categ === "serie" || categ === "película" || categ === "pelicula") {
+    res.json(filtrarCateg);
+  } else {
+    res
+      .status(404)
+      .json({ id: "Error", descripcion: "No se encontraron coincidencias." });
+  }
+});
 
 // RUTA /REPARTO/:ACT
 app.get('/reparto/:act', (req, res) => {
@@ -73,7 +84,7 @@ app.get('/reparto/:act', (req, res) => {
   }
 });
 
-
+//RUTA TRAILER/:ID
 
 app.get("/trailer/:id", (req, res) => {
     let codigo = parseInt(req.params.id);
@@ -99,7 +110,6 @@ app.get("/trailer/:id", (req, res) => {
           });
     }
   });
-  
   app.get("*", (req, res) => {
     res.json({
       error: "404",
