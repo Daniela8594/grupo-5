@@ -32,13 +32,11 @@ Con la estructura base del proyecto ya desarrollada, deberás crear los endpoint
 
 * Crea un endpoint llamado /reparto/:act que liste el catálogo que incluya a la actriz o actor indicado por el nombre. (la búsqueda del nombre debe ser parcial)
 
-* Crea un endpoint llamado /trailer/:id que retorne la URL del trailer de la película o serie. Si ésta no posee video asociado, que retorne un mensaje en formato JSON notificando la no disponibilidad del mismo.
-
+* Creamos un endpoint llamado /trailer/:id que retorna la URL del trailer de la película o serie. Si ésta no posee video asociado, retorna un mensaje en formato JSON notificando la no disponibilidad del mismo. En caso de encotrarlo retorna las propiedades “id”, “titulo”, “trailer”. Como no todas las peliculas/series poseen la propiedad tráiler, se aplica el operador de acceso condicional {objeto?.trailer}
 
 
 
 Para el endpoint /reparto/:act aplica también la misma lógica utilizada en el endpoint/titulo/:title. (Como resultado, retorna solo un array con la propiedad “reparto” y la propiedad “titulo” y sus respectivos datos (no devuelvas todo el contenido) ¿recuerdas a .map()?
-Para el endpoint /trailer/:id debes retornar las propiedades “id”, “titulo”, “trailer”. (cuidado, porque no todas las películas/series poseen la propiedad tráiler, por lo tanto debes aplicar el operador de acceso condicional {objeto?.trailer})
 
 Vamos a usar
 - Express
