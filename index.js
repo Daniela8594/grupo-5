@@ -57,7 +57,18 @@ app.get ('/titulo/:title', (req, res) => {
 
 // RUTA /REPARTO/:ACT
 app.get ('/reparto/:act', (req, res) => {
-    res.send('reparto');
+  let parametro = req.params.act.trim().toLowerCase();
+        if (parametro !== ''){
+            let resultado = []
+            for (let reparto of trailerflix) {
+                if ( reparto.act.toLowerCase() === parametro) { 
+                    resultado.push(reparto)
+                }
+              
+            }
+        resultado.length > 0 ? 
+        res.json(resultado) : 
+        res.json([{id: 'Error', descripcion: 'No se encontro coincidencias'}]);
 });
 
 
