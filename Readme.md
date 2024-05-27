@@ -1,4 +1,4 @@
-A partir de un set de datos en formato de aray de objetos, vamos a crear una API Rest para hacer consultas a un json de peliculas, respecto a la diferente información que contiene. El set de datos Trailerflix contiene información de películas y series, como ser:
+A partir de un set de datos en formato de array de objetos, vamos a crear una API Rest para hacer consultas a un json de peliculas, respecto a la diferente información que contiene, como ser:
 - codigo
 - titulo
 - categoría
@@ -9,20 +9,23 @@ A partir de un set de datos en formato de aray de objetos, vamos a crear una API
 
 Vamos a utilizar distintos métodos:
 - Get para obtener todas las peliculas
-- Get especifico para obtener por titulo
+- Get especifico para obtener por titulo, categoria, reparto y trailer
 
 Tambien vamos a utilizar funciones de orden superior
 
-Con toda esta información, vamos a crear diferentes Endpoint que permitan consultar los datos.
+Con toda esta información, vamos a crear diferentes Endpoints que permiten consultar los datos.
 
-Debes crear la estructura básica de un servidor web utilizando Express JS. Incluye el archivo .ENV donde debes almacenar en una variable de entorno con la ruta parcial + nombre del archivo de datos JSON, además del puerto de ejecución del servidor web.
+En primera instancia creamos la estructura básica de un servidor web utilizando Express JS, incluyendo el archivo .ENV donde se almacena la variable de entorno con la ruta parcial + nombre del archivo de datos JSON, además del puerto de ejecución del servidor web.
 
-El archivo JSON debes guardarlo en una subcarpeta del proyecto llamada /database/
-El número de puerto del servidor web debe ser 3008
-Carga en una constante llamada TRAILERFLIX el contenido del archivo JSON en formato Array de objetos (usando fileSystem API + JSON.parse para obtener y transformar los datos)
-Crea un contenido en formato texto de bienvenida para la ruta raíz del proyecto “/”. El mensaje a mostrar puede ser texto plano, o contenido HTML. (Mejor si es este último)
+El archivo JSON se guardo en una subcarpeta del proyecto llamada /database/
 
-Con la estructura base del proyecto ya desarrollada, deberás crear los endpoints necesarios para listar el catálogo de películas y series por diferentes posibles búsquedas.
+El número de puerto del servidor utilizado es 3008
+
+Se carga el contenido del archivo JSON en una constante llamada TRAILERFLIX en formato Array de objetos (usando fileSystem API + JSON.parse para obtener y transformar los datos)
+
+Se crea el contenido en formato texto de bienvenida para la ruta raíz del proyecto “/”.
+
+Con la estructura base del proyecto ya desarrollada, creamos los endpoints necesarios para listar el catálogo de películas y series por diferentes posibles búsquedas.
 
 * Creamos un endpoint llamado /catalogo que lista todo el contenido de trailerflix JSON. Se retorna todo el contenido del archivo.
 
@@ -30,13 +33,10 @@ Con la estructura base del proyecto ya desarrollada, deberás crear los endpoint
 
 * Creamos un endpoint llamado /categoria/:cat que lista todo el contenido del archivo JSON de acuerdo a la categoría enviada como parámetro (serie o película).Para este endpoint utilizamos .filter() y retorna todos los resultados encontrados. (Aquí son dos posibles valores solamente)
 
-* Crea un endpoint llamado /reparto/:act que liste el catálogo que incluya a la actriz o actor indicado por el nombre. (la búsqueda del nombre debe ser parcial)
+* Crea un endpoint llamado /reparto/:act que liste el catálogo que incluya a la actriz o actor indicado por el nombre. (la búsqueda del nombre debe ser parcial) Para este endpoint aplicamos la misma lógica que la utilizada en el endpoint de title. Como resultado, retorna solo un array con la propiedad reparto y la propiedad título y sus respectivos datos (no todo el contenido)
 
 * Creamos un endpoint llamado /trailer/:id que retorna la URL del trailer de la película o serie. Si ésta no posee video asociado, retorna un mensaje en formato JSON notificando la no disponibilidad del mismo. En caso de encotrarlo retorna las propiedades “id”, “titulo”, “trailer”. Como no todas las peliculas/series poseen la propiedad tráiler, se aplica el operador de acceso condicional {objeto?.trailer}
 
-
-
-Para el endpoint /reparto/:act aplica también la misma lógica utilizada en el endpoint/titulo/:title. (Como resultado, retorna solo un array con la propiedad “reparto” y la propiedad “titulo” y sus respectivos datos (no devuelvas todo el contenido) ¿recuerdas a .map()?
 
 Vamos a usar
 - Express
@@ -85,9 +85,6 @@ Vamos a usar
 - Se levanta MIDDLEWARE, dentro de el se coloca la funcion que lea y extraiga el contenido y que continue trabajando
 
 - Defino const leerpeliculas en index.js
-
-
-
 
 Se comienza a trabajar con las funciones:
 
